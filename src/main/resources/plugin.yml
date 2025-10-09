@@ -1,0 +1,6 @@
+name: XaeroFlowSpoofer
+version: '1.0-SNAPSHOT'
+main: org.me.xaeroFlowSpoofer.XaeroFlowSpoofer
+api-version: '1.21'
+authors: [ _MasterZero ]
+description: This works by intercepting CHUNK_DATA packets and slightly modifying the block data at chunk edges or surface blocks, making the terrain appear subtly altered to clients (including Xaero mods), but leaving the real world untouched.

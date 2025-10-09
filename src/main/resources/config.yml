@@ -1,0 +1,13 @@
+# Chance to spoof fluid flow for a client when crossing chunk edge (0.0 - 1.0)
+spoof-chance: 0.15
+
+# Only spoof flows along chunk edges
+only-chunk-edges: true
+
+# Maximum distance from chunk edge to apply spoof (blocks)
+edge-distance: 1
+
+# --- Fake terrain noise ---
+enable-fake-terrain: true
+terrain-noise-chance: 0.08    # chance to modify a block visually per edge
+terrain-max-edits-per-chunk: 50 # limit edits for performance
