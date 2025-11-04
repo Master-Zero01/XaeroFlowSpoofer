@@ -5,6 +5,12 @@ import com.comphenix.protocol.ProtocolManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.me.xaeroFlowSpoofer.commands.ReloadCommand;
 
+/**
+ * XaeroFlowSpoofer
+ * ----------------
+ * Lightweight and configurable ProtocolLib-based visual spoofing plugin.
+ * Designed for stability, minimal packet overhead, and runtime configurability.
+ */
 public final class XaeroFlowSpoofer extends JavaPlugin {
 
     private ProtocolManager protocolManager;
