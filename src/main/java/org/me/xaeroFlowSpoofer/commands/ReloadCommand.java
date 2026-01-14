@@ -1,41 +1,33 @@
-package org.me.xaeroFlowSpoofer.commands;
+package org.First.pumpkinRitualDupe.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.First.pumpkinRitualDupe.PumpkinRitualDupe;
+
 import org.jetbrains.annotations.NotNull;
-import org.me.xaeroFlowSpoofer.XaeroFlowSpoofer;
 
 /**
- * Handles the /xfsreload command — reloads XaeroFlowSpoofer's configuration and reapplies it.
+ * Command to reload the PumpkinRitualDupe config.
  */
 public class ReloadCommand implements CommandExecutor {
 
-    private final XaeroFlowSpoofer plugin;
+    private final PumpkinRitualDupe plugin;
 
-    public ReloadCommand(@NotNull XaeroFlowSpoofer plugin) {
+    public ReloadCommand(PumpkinRitualDupe plugin) {
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(
-            @NotNull CommandSender sender,
-            @NotNull Command command,
-            @NotNull String label,
-            @NotNull String[] args
-    ) {
-        if (!sender.hasPermission("xaeroflowspoof.reload")) {
-            sender.sendMessage(ChatColor.RED + "You do not have permission to run this command.");
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String @NotNull[] args) {
+        if (!sender.hasPermission("pumpkindupe.reload") && !sender.isOp()) {
+            sender.sendMessage(plugin.getMessage("no-permission"));
             return true;
         }
 
-        long start = System.nanoTime();
-        plugin.reloadPluginConfig();
-        long duration = (System.nanoTime() - start) / 1_000_000L;
-
-        sender.sendMessage(ChatColor.GREEN + "✔ XaeroFlowSpoofer configuration reloaded and applied.");
-        sender.sendMessage(ChatColor.GRAY + "Reload completed in " + duration + " ms.");
+        plugin.reloadConfig();
+        plugin.loadConfigSettings();
+        sender.sendMessage(plugin.getMessage("config-reloaded"));
         return true;
     }
 }
