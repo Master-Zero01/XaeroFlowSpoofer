@@ -8,9 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import org.me.xaeroFlowSpoofer.XaeroFlowSpoofer;
 
 /**
- * Handles the /xfsreload command — reloads XaeroFlowSpoofer's configuration and reapplies it.
+ * Handles the /xfsreload command.
+ * Reloads XaeroFlowSpoofer's configuration and reapplies it dynamically.
  */
-public class ReloadCommand implements CommandExecutor {
+public final class ReloadCommand implements CommandExecutor {
 
     private final XaeroFlowSpoofer plugin;
 
@@ -30,12 +31,12 @@ public class ReloadCommand implements CommandExecutor {
             return true;
         }
 
-        long start = System.nanoTime();
+        long startTime = System.nanoTime();
         plugin.reloadPluginConfig();
-        long duration = (System.nanoTime() - start) / 1_000_000L;
+        long durationMs = (System.nanoTime() - startTime) / 1_000_000L;
 
-        sender.sendMessage(ChatColor.GREEN + "✔ XaeroFlowSpoofer configuration reloaded and applied.");
-        sender.sendMessage(ChatColor.GRAY + "Reload completed in " + duration + " ms.");
+        sender.sendMessage(ChatColor.GREEN + "✔ XaeroFlowSpoofer configuration reloaded successfully.");
+        sender.sendMessage(ChatColor.GRAY + "Reload completed in " + durationMs + " ms.");
         return true;
     }
 }
