@@ -1,29 +1,20 @@
 # =========================================================
 # XaeroFlowSpoofer Configuration
 # =========================================================
-# Controls client-side visual spoofing of fluids and surface blocks.
-# This affects *only* how blocks appear to players — the real world data is untouched.
+# This plugin only alters client-side visuals of blocks.
+# Real world data on the server is never changed.
 # =========================================================
 
 # --- Fluid Spoofing ---
-# Chance (0.0–1.0) that a water or lava block in an outgoing packet
-# will appear as air to the player (visual desync).
 spoof-chance: 0.12
-
-# Restrict fluid spoofing to blocks near the edges of chunks.
-# Recommended: true for realism, false to allow random spoofing anywhere.
 only-chunk-edges: true
-
-# Distance in blocks from the chunk edge within which spoofing can occur.
-# Set higher (2–4) to enlarge the edge zone, or 0 to disable the restriction.
 edge-distance: 1
 
 # --- Terrain Visual Noise ---
-# Enables small random variations in surface materials to create
-# the illusion of terrain instability or interference.
 enable-fake-terrain: true
-
-# Chance (0.0–1.0) that any visible block in a changed section
-# will be visually replaced with a random surface material.
-# Recommended: 0.05–0.15. Higher values make more visible noise.
 terrain-noise-chance: 0.08
+
+# --- Throttling ---
+# Maximum number of spoofed blocks per player per tick.
+# Lower values = better performance, less visible noise.
+max-changes-per-tick: 5
